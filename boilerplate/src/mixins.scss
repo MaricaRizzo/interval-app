@@ -1,0 +1,64 @@
+@import './variables.scss';
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+};
+
+@mixin flex-start {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+};
+
+@mixin absolute-center {
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+@mixin visual-time {
+    width: 100%;
+    height: 0%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    transition: height 0.2s ease;
+    will-change: height;
+}
+
+@mixin button-default {
+    width: 220px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    padding: 0.5rem;
+    background-color: transparent;
+    outline: none;
+    border: 3px solid $dark;
+    color: $dark;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    letter-spacing: 0.2rem;
+    position: absolute;
+    bottom: 4.2rem;
+    @include absolute-center;
+}
+
+@mixin checkBox {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 2px solid #000;
+    cursor: pointer;
+}
+
+@mixin time-wrapper {
+    width: 12rem;
+    height: 12rem;
+    margin: 50px auto;
+    border-radius: 100%;
+    position: relative;
+    padding: 2rem;
+}

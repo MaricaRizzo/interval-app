@@ -1,0 +1,254 @@
+@import "mixins.scss";
+@import './variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+
+
+body, html {
+    font-family: 'PT Sans', sans-serif;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 4.6rem;
+    letter-spacing: 0.2rem;
+    margin: 0;
+}
+
+.interval-h2 {
+    letter-spacing: 0.2rem;
+    margin: 0;
+    font-weight: lighter;
+    position: absolute;
+    top: 50px;
+}
+
+p, span {
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+    margin: 0 1rem;
+}
+
+.app {
+    width: 375px;
+    height: 700px;
+}
+
+main {
+    width: 375px;
+    height: 700px;
+}
+
+section {
+    width: 375px;
+    height: 700px;
+    background-color: #fff;
+    flex-direction: column;
+    @include flex-center;
+    display: none;
+    box-shadow: 0 0 10px 3px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+section.active {
+    display: flex;
+}
+.changeBtn.active {
+    display: block;
+}
+
+
+img {
+    width: 100%;
+}
+
+button:not(.changeBtn, .step-right, .step-left) {
+    @include button-default;
+}
+
+.timer-setup-screen {
+    width: 100%;
+    .time-step-wrapper {
+        width: 100%;
+        @include flex-center;
+        justify-content: space-around;
+        button {
+            width: 30px;
+            height: 60px;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            background-image: url(../images/arrow.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            cursor: pointer;
+        }
+        .step-right {
+            transform: rotateY(180deg);
+        }
+    }
+    .timer-type-wrapper {
+        width: 100%;
+        flex-direction: column;
+        @include flex-center;
+        margin: 3rem 0 1rem 0;
+    }
+    .checkbox {
+        @include flex-start;
+        width: 300px;
+        margin: 0.5rem 0;
+        .box {
+            @include checkBox;
+        }
+        .box.checked {
+            background-color: #000;
+            position: relative;
+        }
+        .box.checked::before {
+            content: 'x';
+            color: $light;
+            position: absolute;
+            top: -0.48rem;
+            left: 0.25rem;
+            font-size: 1.5rem;
+        }
+    }
+    .timers-wrapper {
+        margin: 1rem 0;
+    }
+}
+
+.visual-time {
+    @include visual-time;
+}
+
+#liquidDiv {
+    transform: rotate(180deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: -30px;
+    width: 100%;
+    will-change: top;
+    transition: top 0.3s ease;
+}
+
+.changeBtn {
+    border: none;
+    background: transparent;
+    display: none;
+    cursor: pointer;
+
+    .loading-screen{
+        background: black;
+    }
+
+    .text {
+        width: 50%;
+    }
+
+    .logo {
+        animation-name: bounce-1;
+        animation-duration: 3000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear; 
+        height: 5rem;
+        max-width: 5.5rem;
+        margin-bottom: 2rem;
+        
+    }
+
+    @keyframes bounce-1 {
+        0%   { transform: translateY(0); }
+        50%  { transform: translateY(-40px); }
+        100% { transform: translateY(0); }
+    }
+}
+
+.pause-screen {
+    background-color: $dark;
+    color: $light;
+}
+
+.stop-pause-button {
+    color: $light !important;
+    border-color: $light !important;
+}
+
+.time-wrapper {
+    @include time-wrapper;
+    .analog-face {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform: translateY(-3px);
+    }
+    .minute-mark {
+        width: 50%;
+        height: 4px;
+        background: black;
+        position: absolute;
+        top: 50%;
+        transform-origin: 100%;
+        transform: rotate(90deg);
+        border-radius: 45%;
+    }
+    .second-mark {
+        width: 50%;
+        height: 2px;
+        background: #7e7e7e;
+        position: absolute;
+        top: 50%;
+        transform-origin: 100%;
+        transform: rotate(90deg);
+        border-radius: 45%;
+    }
+    .diallines {
+        position: absolute;
+        z-index: 2;
+        width: 2px;
+        height: 15px;
+        background: #222222;
+        left: 50%;
+        top: -16%;
+        margin-left: -1px;
+        transform-origin: 50% 130px;
+      }
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 3px solid black;
+        background: #7e7e7e;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        position: absolute;
+        z-index: 10;
+      }
+}
+
+#CircleTimer {
+    .time-wrapper {
+        border-radius: 50%;
+    }
+   
+    .circle {
+        border: 1px solid black;
+        border-radius: 50%;
+        padding: 10px;
+        background-color: white;
+        
+    }
+    .fill {
+        background-color: #999999;
+    }
+}
+
